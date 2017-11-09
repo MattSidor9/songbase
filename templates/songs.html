@@ -1,0 +1,22 @@
+{% extends "home-base.html" %}
+{% block head %}
+{{super()}}
+<style media="screen">
+  h1{
+    color:blue;
+  }
+</style>
+{% endblock %}
+{% block title %}
+AllSongs
+{% endblock %}
+{% block page_content %}
+  <body>
+    <h1>this is the song list:</h1>
+    <ul>
+    {% for song in songs%}
+        <li>{{song}}</li>
+    {% end for %}
+    <img src= "{{ url_for 'static', filename= 'img/google2.0.0.jpg'}}" alt="">
+    </ul>
+{% endblock %}
