@@ -1,12 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
-
+app.config ['SECRET_KEY'] = 'akljsbdflasjbdf'
 
 @app.route('/')
 def home():
     # return '<h1>hello world!!!!! lalala</h1>'
     return render_template('index.html')
 
+
+@app.route('form-demo', methods=['GET', 'POST'])
+def form_demo():
+if request.method == 'GET':
+    if first_name:
+        first_name = request.args.get('first_name')
+    else
+        first_name = session.get('first_name')
+    return render_template('form-demo.html')
+if request.method == 'POST':
+    session['first_name'] = request.form.['first_name']
+    # return render_template('form-demo.html', first_name=first_name)
+    return redirect(url_for('form_demo'))
 
 @app.route('/user/<string:name>/')
 def get_user(name):
